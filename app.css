@@ -1,6 +1,6 @@
 body {
-  /* background-color: rgb(24, 91, 179); */
-  transition: background-color 1000ms;
+  background: linear-gradient(#e66465, #9198e5);
+
 }
 
 div {
