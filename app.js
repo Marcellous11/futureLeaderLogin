@@ -5,20 +5,14 @@ let div = document.querySelector("div");
 
 function randomColor() {
   let r = Math.floor(Math.random() * 256);
-  let g = Math.floor(Math.random() * 256);
-  let b = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 150);
+  let b = Math.floor(Math.random() * 150);
 
-  return `rgb(${r},${g},${b})`;
+  return `rgb(0,${g},${b})`;
 }
-
-h1.addEventListener("click", function (e) {
-  body.style.backgroundColor = randomColor();
-});
 
 const intervalId = setInterval(function () {
   for (let input of inputs) {
     input.style.backgroundColor = randomColor();
   }
-
-  h1.style.backgroundColor = randomColor();
 }, 1000);
