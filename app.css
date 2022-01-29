@@ -1,5 +1,6 @@
 body {
-  background-color: rgb(24, 91, 179);
+  /* background-color: rgb(24, 91, 179); */
+  transition: background-color 1000ms;
 }
 
 div {
@@ -23,9 +24,6 @@ div {
   border-width: thin ;
 }
 
-h1{
-	transition: color 1500ms;
 
-}
 
 
