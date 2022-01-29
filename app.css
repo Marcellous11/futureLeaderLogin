@@ -1,3 +1,30 @@
 body {
   background-color: rgb(24, 91, 179);
 }
+
+div {
+
+  /* display:flex; */
+  /* justify-content: center; */
+  /* align-content: center; */
+  height: 100vh;
+  transition: color 1000ms;
+}
+
+
+
+
+.boxes {
+  transition: color 1000ms;
+  background-color: teal;
+  color: darkgreen;
+  border-radius: 10px;
+  border-width: thin ;
+}
+
+h1{
+	transition: color 1500ms;
+  
+}
+
+
