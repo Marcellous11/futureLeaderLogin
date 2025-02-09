@@ -1,2 +1,6 @@
 # futureLeaderLogin
-This is a demo example, showing how to use git/github
+My First Git Project
+
+Built using Node.js and Git.
+
+Try it out: `git clone https://github.com/marcellouscurtis/futureLeaderLogin.git` then `node index.js`

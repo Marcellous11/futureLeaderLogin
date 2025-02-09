@@ -1,0 +1,26 @@
+{% extends "home.html" %}
+{% block title %}Log in {% endblock %}
+{% block content %}
+<h1>Sign Up</h1>
+
+<div>
+  Sign up with your email and password
+  <form method="POST" id="userForm" action="/signup">
+    <label
+      >Email:
+      <input type="email" id="userEmail" class="boxes" name="userEmail" required/>
+    </label>
+    <br />
+    <label>
+      Password:
+      <input type="password" id="userPassword" class="boxes" name="userPassword" required/>
+    </label>
+    <br />
+    <!-- <label>
+      Re-Enter Password:
+      <input type="password" id="confirmPassword" class="boxes" required/>
+    </label> -->
+    <button>Submit</button>
+  </form>
+</div>
+{% endblock %}

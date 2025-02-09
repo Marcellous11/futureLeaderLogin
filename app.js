@@ -1,27 +1,36 @@
-let h1 = document.querySelector("h1");
-let body = document.querySelector("body");
-let inputs = document.querySelectorAll(".boxes");
-let div = document.querySelector("div");
 
-function randomColor() {
-  let r = Math.floor(Math.random() * 256);
-  let g = Math.floor(Math.random() * 150);
-  let b = Math.floor(Math.random() * 150);
+let form = document.getElementById("userForm")
 
-  return `rgb(0,${g},${b})`;
-}
+form.addEventListener("submit",async function(e){
+  e.preventDefault()
+  console.log("This FAR")
+  const email = document.getElementById("userEmail")
+  const password = document.getElementById("userPassword")
 
-function gradient() {
-  let r = Math.floor(Math.random() * 256);
-  let g = Math.floor(Math.random() * 150);
-  let b = Math.floor(Math.random() * 150);
-
-  return `linear Gradient(${randomColor()},${randomColor()})`;
-}
-
-const intervalId = setInterval(function () {
-  for (let input of inputs) {
-    input.style.backgroundColor = randomColor();
+  const json = await login(email.value,password.value)
+  console.log(json)
   }
-  body.style.background = linear - gradient(randomColor(), randomColor());
-}, 1000);
+)
+
+async function login(email,password){
+
+  try{
+    const res = await fetch("http://127.0.0.1:5000/login",{
+      method:"POST",
+      headers:{ 'Content-Type': 'application/json' },
+      body:JSON.stringify({email:email,password:password})
+      }
+    )
+
+    if(!res.ok){
+      throw new Error(`Response status: ${res.status}`)
+    }
+    const data = await res.json();  // Await the JSON response
+    console.log(data);  // Logs actual response data
+
+    return data
+
+  }catch (err){
+    console.log(err)
+  }
+}
