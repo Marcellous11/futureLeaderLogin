@@ -1,12 +1,11 @@
-from flask import Blueprint, render_template, redirect
-home_pb = Blueprint("home",__name__)
+from flask import Blueprint, render_template, redirect, session,url_for
+
+home_bp = Blueprint("home",__name__)
 
 
-@home_pb.route('/home')
+@home_bp.route('/home')
 def home():
-    logged_in = True
 
-    if not logged_in:
-        return redirect("login")
-    
-    return render_template('home.html',logged_in=True)
+    if not session.get("name"):
+        return redirect(url_for("login.login"))
+    return render_template('home.html')

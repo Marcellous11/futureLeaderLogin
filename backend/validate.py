@@ -12,20 +12,21 @@ class Auth:
         return hashed
     
     @staticmethod
-    def verify_password(user,password):
-        if user:  # Ensure the user exists
-            stored_hashed_password = user[1]  # Extract the hashed password as a string
-            if bcrypt.checkpw(password.encode(), stored_hashed_password):
-                print("Password is correct!")
-                return True
+    def verify_password(user,password)->bool:
+        try:
+            if user:  # Ensure the user exists
+
+                stored_hashed_password = user["password"]
+                print("Password ---->",user["password"])
+                if bcrypt.checkpw(password.encode(), stored_hashed_password):
+                    print("Auth: Password is correct!")
+                    return True
+                else:
+                    print("Auth: Incorrect password.")
+                    return False
             else:
-                print("Incorrect password.")
+                print("User not found.")
                 return False
-        else:
-            print("User not found.")
+        except Exception as e :
+            print(f"Failed with {e}")
             return False
-
-
-    @staticmethod
-    def email_already_exist():
-        return 

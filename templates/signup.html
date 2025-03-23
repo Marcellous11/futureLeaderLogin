@@ -1,5 +1,7 @@
 {% extends "home.html" %}
 {% block title %}Log in {% endblock %}
+
+
 {% block content %}
 <h1>Sign Up</h1>
 
@@ -13,13 +15,13 @@
     <br />
     <label>
       Password:
-      <input type="password" id="userPassword" class="boxes" name="userPassword" required/>
+      <input type="password" id="userPassword" class="boxes" name="userPassword" minlength="8" required/>
     </label>
     <br />
-    <!-- <label>
+    <label>
       Re-Enter Password:
-      <input type="password" id="confirmPassword" class="boxes" required/>
-    </label> -->
+      <input type="password" id="confirmPassword" class="boxes"name="confirmPassword" required/>
+    </label>
     <button>Submit</button>
   </form>
 </div>
