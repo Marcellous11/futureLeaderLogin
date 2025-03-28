@@ -18,6 +18,10 @@ def signup():
         password = request.form.get("userPassword")
         confirmPassword = request.form.get("confirmPassword")
 
+        # print(email)
+        # print(password)
+        # print(confirmPassword)
+
         if password != confirmPassword:
             flash("Passwords did not match")
             return redirect(url_for("signup.signup"))
