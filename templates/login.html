@@ -1,20 +1,25 @@
 {% extends "home.html" %}
-{% block title %}Profile{% endblock %}
+{% block title %}Log in {% endblock %}
+
+
 {% block content %}
-<div class="admin_page">
-    <h1>User Profile</h1>
-    <div>
-        <h2>Information</h2>
+<h1>Log In</h1>
 
-        <h3 href="">Email</h3>
-        <span>"{{user_info['email']}}"</span>
-        <a href="{{url_for('edit_email.edit_email')}}">Edit</a>
-
-        <h3>Current Password</h3>
-        <span>**********</span>
-        <a href="{{url_for('edit_password.edit_password')}}">Edit</a>
-    </div>   
+<div>
+Please enter email and password
+  <form method="POST" id="userForm" action="/login">
+    <label
+      >Email:
+      <input type="email" id="userEmail" class="boxes" name="userEmail" required/>
+    </label>
+    <br />
+    <label>
+      Password:
+      <input type="password" id="userPassword" class="boxes" name="userPassword" minlength="8" required/>
+    </label>
+    <br />
+   
+    <button>Submit</button>
+  </form>
 </div>
-
-
-{% endblock %} 
+{% endblock %}

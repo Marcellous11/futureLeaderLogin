@@ -9,14 +9,14 @@ def db_connect():
     db_path = 'backend/user_data.db'
     return  AccessDB(db_path)
 
-#! FREEZING???
-# print(session)
-
 @login_bp.route('/login',methods=["GET","POST"])
 def login():
     if request.method == "POST":
         email = request.form.get("userEmail")
         password = request.form.get("userPassword")
+
+        print(email)
+        print(password)
 
         with db_connect() as db:
             user = db.get_user_info(email)
@@ -40,7 +40,7 @@ def login():
     if session.get("name"):
         return redirect(url_for("home.home"))
 
-    return render_template('login.html',user_info=user)
+    return render_template('login.html')
 
 @login_bp.route('/logout')
 def logout():
