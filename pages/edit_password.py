@@ -11,7 +11,7 @@ def db_connect():
     return  AccessDB(db_path)
 
 @edit_password_bp.route('/edit_password',methods=["GET","POST"])
-def signup():
+def edit_password():
     
     if not session.get("name"):
         return redirect(url_for("login.login"))

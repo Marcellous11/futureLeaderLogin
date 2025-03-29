@@ -10,8 +10,8 @@ def db_connect():
     db_path = 'backend/user_data.db'
     return  AccessDB(db_path)
 
-@admin_bp.route('/signup',methods=["GET","POST"])
-def signup():
+@admin_bp.route('/admin',methods=["GET","POST"])
+def admin():
   
     if not session.get("name"):
         return redirect(url_for("login.login"))

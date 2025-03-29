@@ -1,0 +1,28 @@
+{% extends "home.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="admin_page">
+    <h1>Edit Email</h1>
+    <div>
+        <!-- <h2></h2> -->
+
+        <h3 href="">Current Email</h3>
+        <span>"{{user_info['email']}}"</span>
+        <!-- <a href="{{url_for('edit_email.edit_email')}}">Edit</a> -->
+
+        <h3 href="">Enter New Email</h3>
+        <label>
+            Email:
+            <input type="email" id="userEmail" class="boxes" name="userEmail" required/>
+        </label>
+
+        <h3 href="">Confirm With Password</h3>
+        <label>
+            Password:
+            <input type="password" id="password" class="boxes" name="password" required/>
+        </label>
+        
+  
+    </div>   
+</div>
+{% endblock %} 

@@ -12,7 +12,7 @@
         {%if session.name %}
             <a href="{{ url_for('login.logout') }}">Logout</a>
             <a href="{{ url_for('home.home') }}">Home</a>
-            <a href="{{ url_for('user_profile.user_profile') }}">Profile</a>
+            <a href="{{ url_for('user_profile.user_profile')}}">Profile</a>
             {%if session.admin%}
             <a href="{{ url_for('admin.admin') }}">Admin</a>
             {% endif %}
@@ -40,7 +40,5 @@
         {% endwith %}
 
     </div>
-
-    <!-- <script src="app.js"></script> -->
 </body>
 </html>

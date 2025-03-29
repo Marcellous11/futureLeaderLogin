@@ -1,2 +1,5 @@
 venv
 .env
+backend/__pycache__/
+pages/__pycache__/
+pages/auth/__pycache__/
