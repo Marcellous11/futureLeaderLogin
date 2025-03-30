@@ -12,12 +12,10 @@ class Auth:
         return hashed
     
     @staticmethod
-    def verify_password(user,password)->bool:
+    def verify_password(user:dict,password:str)->bool:
         try:
             if user:  # Ensure the user exists
-
                 stored_hashed_password = user["password"]
-                print("Password ---->",user["password"])
                 if bcrypt.checkpw(password.encode(), stored_hashed_password):
                     print("Auth: Password is correct!")
                     return True

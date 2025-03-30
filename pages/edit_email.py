@@ -17,10 +17,24 @@ def edit_email():
         return redirect(url_for("login.logout"))
     
     with db_connect() as db:
-        user = db.get_user_info(session.get("name"))
-    
+        user = db.get_user_info(session["name"])
+        
     if request.method == "POST":
-        pass
+        new_email = request.form.get("newEmail")
+        password = request.form.get("password")
+
+        with db_connect() as db:
+            user = db.get_user_info(session["name"])
+            if Auth.verify_password(user,password):
+                db.update_user_email(new_email,session["id"])
+                session["name"] = new_email
+                flash("Email has been updated!")
+                return redirect(url_for("edit_email.edit_email"))
+            else:
+                flash("Password Validation failed")
+                return redirect(url_for("edit_email.edit_email"))
+        
+        
         
 
     return render_template('edit_email.html',user_info=user)

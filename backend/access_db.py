@@ -1,4 +1,5 @@
 import sqlite3
+from backend.validate import Auth
 
 class AccessDB:
     def __init__(self,db_path):
@@ -88,6 +89,7 @@ class AccessDB:
         
 
     def update_user_password(self,new_password,id):
+
         user_data = (new_password,id)
         try:
             query = "UPDATE user_data SET password=? WHERE id = ?"

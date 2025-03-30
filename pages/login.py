@@ -27,14 +27,15 @@ def login():
 
             if Auth.verify_password(user,password):
                 session["name"] = user["email"]
-                session["admin"] = user.get("admin",0)
+                session["admin"] = user["admin"]
+                session["id"] = user["id"]
                 print(f"Sesison after login: {session}")
                 flash("Correct Password")
     
                 return redirect(url_for("login.login"))
             else:
                 print("BAD PASSWORD")
-                flash("Incorrect Password")
+                flash("Incorrect Password: "+ password)
                 return redirect(url_for("login.login"))
         
     if session.get("name"):

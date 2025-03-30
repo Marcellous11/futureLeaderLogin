@@ -14,5 +14,26 @@ def db_connect():
 def edit_password():
     
     if not session.get("name"):
-        return redirect(url_for("login.login"))
-    return render_template('home.html')
+        return redirect(url_for("login.logout"))
+
+    with db_connect() as db:
+        user = db.get_user_info(session["name"])
+        
+    if request.method == "POST":
+        password = request.form.get("currentPassword")
+        new_password = request.form.get("newPassword")
+
+        with db_connect() as db:
+            user = db.get_user_info(session["name"])
+            
+            if Auth.verify_password(user,password):
+                new_hashed_password = Auth.hash_password(new_password)
+                db.update_user_password(new_hashed_password,session["id"])
+
+                flash("Password has been updated!")
+                return redirect(url_for("user_profile.user_profile"))
+            else:
+                flash("Password Validation failed")
+                return redirect(url_for("edit_password.edit_password"))
+            
+    return render_template('edit_password.html',user_info=user)
