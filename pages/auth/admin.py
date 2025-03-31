@@ -15,4 +15,19 @@ def admin():
   
     if not session.get("name"):
         return redirect(url_for("login.login"))
-    return render_template('home.html')
+    
+    with db_connect() as db:
+        all_users = db.get_all_users()    
+    
+    if request.method == "POST":
+
+        with db_connect() as db: 
+            updated_users = request.form.get()
+            for user in updated_users:
+                db.update_admin_status()
+
+
+
+
+
+    return render_template('admin.html',all_users=all_users)

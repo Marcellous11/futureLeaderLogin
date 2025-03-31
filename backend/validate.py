@@ -2,8 +2,7 @@ import bcrypt
 
 class Auth:
     def __init__(self):
-        pass
-
+        raise NotImplementedError("This class should not be instantiated")
     
     @staticmethod
     def hash_password(password):
