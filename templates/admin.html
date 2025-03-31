@@ -2,18 +2,17 @@
 {% block title %}Profile{% endblock %}
 {% block content %}
 <div class="admin_page">
-    <h1>Edit Email</h1>
+    <h1>Admin Page</h1>
     <div>
-        <h2>Current Email</h2>
-        <span>"{{user_info['email']}}"</span>
-        <!-- <a href="{{url_for('edit_email.edit_email')}}">Edit</a> -->
+        <h2>All Users</h2>
 
-        <h2 href="">Enter New Email</h2>
-        <form action="/edit_email" method="POST">
-        {% for user in user_list %}
+        <form action="/admin" method="POST">
+        {% for user in all_users %}
         <label>
-            Email:
-            <input type="checkbox" id="newEmail" class="boxes" name="admin" required/>
+            Email: {{user["email"]}} 
+            <input type="checkbox" id="{{user[id]}}" class="boxes" name="{{user['id']}}" 
+            value="1" {% if user['admin'] ==1%} checked {%endif%}
+            />
         </label>
         {%endfor%}
             <button>Submit</button>          

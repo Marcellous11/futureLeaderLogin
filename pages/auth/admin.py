@@ -22,12 +22,18 @@ def admin():
     if request.method == "POST":
 
         with db_connect() as db: 
-            updated_users = request.form.get()
-            for user in updated_users:
-                db.update_admin_status()
-
-
-
-
+            updated_users = request.form.to_dict()
+            admin_list = [key for key in updated_users.keys()]
+            if len(admin_list) == 0:
+                flash("WAIT! There must be at least 1 Admin")
+                return redirect(url_for("admin.admin"))
+         
+            for user in all_users:
+                if str(user["id"]) in admin_list:
+                    db.update_admin_status(user['id'],1)
+                else:
+                    db.update_admin_status(user["id"],0)
+        flash("Admin status updated!")
+        return redirect(url_for("admin.admin"))
 
     return render_template('admin.html',all_users=all_users)
