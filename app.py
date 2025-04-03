@@ -9,12 +9,14 @@ from pages.user_profile import user_profile_bp
 from pages.edit_email import edit_email_bp
 from pages.edit_password import edit_password_bp
 from flask_session import Session
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 app.config.from_pyfile("config.py")
 app.config["SESSION_TYPE"] = "filesystem"
 CORS(app)
 Session(app)
+Bootstrap(app)
 
 
 app.register_blueprint(home_bp)
