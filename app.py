@@ -8,7 +8,6 @@ from pages.auth.admin import admin_bp
 from pages.user_profile import user_profile_bp
 from pages.edit_email import edit_email_bp
 from pages.edit_password import edit_password_bp
-from pages.boot_strap import boot_strap_bp
 from flask_session import Session
 from flask_bootstrap import Bootstrap
 
@@ -27,7 +26,6 @@ app.register_blueprint(admin_bp)
 app.register_blueprint(user_profile_bp)
 app.register_blueprint(edit_email_bp)
 app.register_blueprint(edit_password_bp)
-app.register_blueprint(boot_strap_bp)
 
 
 @app.route("/")
