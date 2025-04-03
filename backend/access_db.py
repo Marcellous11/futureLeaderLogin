@@ -100,3 +100,15 @@ class AccessDB:
             print(e)
             self.conn.rollback()
             return False
+
+    def delete_account(self,id)->bool:
+        user_data = (id)
+        try:
+            query = "DELETE FROM user_data WHERE id = ?"
+            self.cursor.execute(query,user_data)
+            self.conn.commit()
+            return True
+        except Exception as e :
+            print(e)
+            self.conn.rollback()
+            return False
